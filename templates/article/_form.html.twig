@@ -1,0 +1,30 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_help(form.name) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_help(form.description) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+    {{ form_help(form.content) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.category) }}
+    {{ form_widget(form.category, {'attr': {'class': 'form-control'}})  }}
+    {{ form_help(form.category) }}
+</div>
+
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

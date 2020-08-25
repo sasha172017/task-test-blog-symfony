@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}This Is Blog{% endblock %}
+
+{% block body %}
+<div>
+    <a class="h3" href="{{ url('article_index') }}">All Articles</a>
+</div>
+    <br>
+    Category:
+    <br>
+    <div>
+    {{ render(controller(
+        'App\\Controller\\CategoryController::index'
+    )) }}
+    </div>
+    <br>
+    Tags:
+    <br>
+    <div>
+        {{ render(controller(
+            'App\\Controller\\TagController::index'
+        )) }}
+    </div>
+    <div>
+        <a href="/login">Log In for Admin</a><br>
+        <a href="/logout">Logout</a>
+    </div>
+{% endblock %}

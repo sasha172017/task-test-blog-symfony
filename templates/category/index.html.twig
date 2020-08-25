@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category list with article{% endblock %}
+
+{% block body %}
+<ul>
+    {% for category in categories %}
+        <li>Category: {{ category.name }}</li>
+        <ul>
+        {% for article in category.articles %}
+            <li><a href="{{ url('article_show', {'id': article.id}) }}">{{ article.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <span>Categories Not Found</span>
+    {% endfor %}
+</ul>
+    {% if is_granted('ROLE_ADMIN') %}
+
+    <a href="{{ path('category_new') }}">Create new</a>
+    {% endif %}
+{% endblock %}

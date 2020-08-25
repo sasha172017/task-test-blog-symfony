@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>{{ knp_pagination_sortable(pagination, 'id', 'id') }}</th>
+            <th{% if pagination.isSorted('name') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'name', 'name') }}
+            </th>
+            <th>
+                Category
+            </th>
+        </tr>
+        {% for article in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ article.id }}</td>
+                <td><a href="{{ url('article_show', {'id': article.id}) }}">{{ article.name }}</a></td>
+                <td>{{ article.category.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('article_new') }}">Create new</a>
+    {% endif %}
+{% endblock %}
